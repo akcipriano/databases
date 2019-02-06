@@ -17,11 +17,11 @@ USE chat;
 
 DROP TABLE IF EXISTS `users`;
 
-CREATE TABLE `users` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(20) NOT NULL DEFAULT 'anonymous',
-  PRIMARY KEY (`id`)
-);
+-- CREATE TABLE `users` (
+--   `id` INTEGER NOT NULL AUTO_INCREMENT,
+--   `name` VARCHAR(20) NOT NULL DEFAULT 'anonymous',
+--   PRIMARY KEY (`id`)
+-- );
 
 -- ---
 -- Table 'messages'
@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `text` VARCHAR(250) NULL DEFAULT NULL,
-  `user_id` INTEGER NOT NULL,
+  `username` VARCHAR(30) NOT NULL DEFAULT 'anonymous',
   `roomname` VARCHAR(30) NULL DEFAULT NULL,
   `created_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`)
@@ -43,7 +43,7 @@ CREATE TABLE `messages` (
 -- Foreign Keys
 -- ---
 
-ALTER TABLE `messages` ADD FOREIGN KEY (user_id) REFERENCES `users` (`id`);
+-- ALTER TABLE `messages` ADD FOREIGN KEY (user_id) REFERENCES `users` (`id`);
 
 -- ---
 -- Table Properties
