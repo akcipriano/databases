@@ -19,19 +19,19 @@ app.use(morgan('dev'));
 app.use(parser.json());
 
 
-app.get('/', function (req, res) {
+/* app.get('/', function (req, res) {
   console.log("Got request from client");
   res.send('Hello World!');
-});
+}); */
 
 
 
 // Set up our routes
-//app.use('/classes', router);
+app.use('/classes', router);
 
 
 // Serve the client files
-console.log("__dirname:", __dirname);
+//console.log("__dirname:", __dirname);
 app.use(express.static(__dirname + '/../client'));
 
 // If we are being run directly, run the server.
