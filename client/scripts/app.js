@@ -15,24 +15,18 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
-
     // Poll for new messages every 3 sec
-    setInterval(App.fetch, 3000);
+    // setInterval(App.fetch, 3000);
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-
-      //console.log("Response from Get request:", data);
       // Don't bother to update if we have no messages
-      if (!data.results || !data.results.length) {
-        //console.log("Data.Results are:", data.results);
-        //console.log("Typeof Data is:", typeof(data));
+      if (!data || !data.length) {
         return;
       }
-      //console.log("Got results:", data.results);
-      Rooms.update(data.results, RoomsView.render);
-      Messages.update(data.results, MessagesView.render);
+      Rooms.update(data, RoomsView.render);
+      Messages.update(data, MessagesView.render);
 
       callback();
     });

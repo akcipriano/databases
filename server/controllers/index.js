@@ -4,14 +4,14 @@ module.exports = {
   messages: {
     // a function which handles a get request for all messages
     get: function (req, res) {
-      console.log('------------------------get messages request is:');
+      models.messages.get(function(data) {
+        res.status(200).json(data);
+      });
     },
     // a function which handles posting a message to the database
     post: function (req, res) {
-      console.log('------------------------post messages request is:', req.body);
       var newMessage = req.body;
       models.messages.post(newMessage, function(data) {
-        console.log(data);
         res.send(data);
       });
     }
@@ -20,15 +20,15 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {
-      console.log('------------------------get user request is:');
+      models.users.get(function(data) {
+        res.end(JSON.stringify(data));
+      });
     },
 
     post: function (req, res) {
-      console.log('------------------------ post user request is:', req.body);
       var newUser = req.body;
       models.users.post(newUser, function(data) {
-        console.log(data);
-        res.send(data);
+        res.status(200).json(data);
       });
     }
   }
