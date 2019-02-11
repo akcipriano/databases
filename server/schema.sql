@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(20) NOT NULL DEFAULT 'anonymous',
+  `username` VARCHAR(20) NOT NULL DEFAULT 'anonymous',
   PRIMARY KEY (`id`)
 );
 

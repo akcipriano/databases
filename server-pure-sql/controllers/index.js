@@ -12,7 +12,7 @@ module.exports = {
     post: function (req, res) {
       var newMessage = req.body;
       models.messages.post(newMessage, function(data) {
-        res.status(200).json(data);
+        res.send(data);
       });
     }
   },
@@ -21,7 +21,7 @@ module.exports = {
     // Ditto as above
     get: function (req, res) {
       models.users.get(function(data) {
-        res.status(200).json(data);
+        res.end(JSON.stringify(data));
       });
     },
 
